@@ -24,10 +24,12 @@ public class PlayerMovement : MonoBehaviour
     private float waitBeforeMoving;
 
     private bool canMove = true;
+    private PlayerShootingManager shootingManager;
 
     private void Awake()
     {
         playerAnimation = GetComponent<PlayerAnimations>();
+        shootingManager = GetComponent<PlayerShootingManager>();
     }
     // Update is called once per frame
     void Update()
@@ -99,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
         waitBeforeShooting = Time.time + shootWaitTime; //restrict players shooting
         StopMovement();
         playerAnimation.PlayAnimation(TagManager.SHOOT_ANIMATION_NAME);
+        shootingManager.Shoot(transform.localScale.x);
     }
     void HandleShooting()
     {

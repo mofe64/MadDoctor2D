@@ -21,6 +21,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public void setFacingDirection(bool faceRight)
     {
+        //note using scale to change the obj orientation affects the gameobj as well as children game obj, using flipx does not
         temporaryScale = transform.localScale;
         if (faceRight)
         {
